@@ -11,7 +11,7 @@ LDFLAGS ?= -fsanitize=address,undefined
 $(TARGET_EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $@ $(LDFLAGS)
 
-.PHONY: clean all
+.PHONY: clean all test
 
 all: $(TARGET_EXEC)
 

@@ -67,7 +67,7 @@ teardown() {
 
 @test "check ls -a" {
     result=$(./ls -a ${TEST_DIR} | awk '{print $1}' | sort)
-    compare=$(ls -1a --color=never --file-type ${TEST_DIR} | grep -v "^total"| sed 's/@$//g' | awk '{print $1}' | sort)
+    compare=$(ls -1a --color=never --file-type ${TEST_DIR} | grep -v "^total"| sed 's/@$//g' | sed 's!\./!.!' | awk '{print $1}' | sort)
     if [ "$result" != "$compare" ]; then
         printf "Failed: Diff between output and expected:\n"
         diff <(echo "$result") <(echo "$compare")
